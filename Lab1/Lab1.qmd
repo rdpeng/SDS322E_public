@@ -1,0 +1,151 @@
+---
+title: "Lab 1"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+### Enter the names of the group members below: (2 pts)
+
+**This assignment is due by the end of the day. Only one student in the group submits a pdf file on Gradescope. When submitting the lab, remember to ADD GROUP MEMBERS to the submission.**
+
+*For all questions, include the R commands/functions that you used to find your answer (show R chunk). Answers without supporting code will not receive credit. Write full sentences to describe your findings.*
+
+In this lab, you will explore the dataset `faithful`. It contains information about eruptions of the Old Faithful geyser in Yellowstone National Park. The first few observations are listed below.
+
+```{r}
+#| warning: false
+library(tidyverse)
+library(datasets)
+faithful |> 
+    head()
+```
+
+### Question 1: (2 pts)
+
+The first goal is to determine how many rows and columns are in the dataset. Without looking at the data, have each group member guess how how many rows there are.
+
+**Your answer goes here. Write sentences in bold.**
+
+Try using the `glimpse()` function from the `tidyverse`. How many rows and columns does the `glimpse()` function report for the `faithful` dataset? Which lab member came the closest to what `glimpse()` reports?
+
+```{r}
+# your code goes below (make sure to edit comment)
+
+```
+
+**Your answer goes here. Write sentences in bold.**
+
+In which units are the variables reported? You will need more information about the dataset to answer that last question: run `?faithful` **in the console**. 
+
+*Note: DO NOT use `?` in this document as that will prevent you from rendering it or will open the documentation in a new tab.*
+
+**Your answer goes here. Write sentences in bold.**
+
+------------------------------------------------------------------------
+
+### Question 2: (2 pts)
+
+Using the function `summary()` for each variable, find the minimum, maximum, mean, and median values of each variable. Write a sentence to interpret the mean eruption duration and the mean waiting time.
+
+```{r}
+# your code goes below (make sure to edit comment)
+
+```
+
+**Your answer goes here. Write sentences in bold.**
+
+Two scientists studying the waiting times between eruptions at Old Faithful have different theories of the mean waiting time between eruptions. Scientist A hypothesizes that the true mean waiting time is 50 minutes while Scientist B hypothesizes that the true mean waiting time is 75 minutes. When considering the output of the `summary()` function, which hypothesis seems more likely according to the data (A or B)?
+
+**Your answer goes here. Write sentences in bold.**
+
+------------------------------------------------------------------------
+
+### Question 3: (2 pts)
+
+Create a histogram of each variable with the function `hist()`. (You can find the help page for `hist()` by calling `?hist` at the console.) Make sure to label axes (`xlab=`) and give a title to the graph (`main=`).
+
+```{r}
+# your code goes below (make sure to edit comment)
+
+```
+
+------------------------------------------------------------------------
+
+### Question 4: (2 pts)
+
+Let's do some filtering and logical indexing. What does the code below do?
+
+```{r}
+#| eval: false
+faithful |> 
+        filter(waiting > 60) 
+```
+
+**Your answer goes here. Write sentences in bold.**
+
+------------------------------------------------------------------------
+
+### Question 5: (2 pts)
+
+Using filtering and logical indexing and the function `mean()`, find
+
+-   the mean of the variable `eruptions` when `waiting` is **less than or equal to** 1 hour, and
+
+-   the mean of the variable `eruptions` when `waiting` is **more than** 1 hour.
+
+Compare the two means. How do the means change with the eruption time being less than or equal to or greater than 1 hour?
+
+```{r}
+# your code goes below (make sure to edit comment)
+
+```
+
+**Your answer goes here. Write sentences in bold.**
+
+------------------------------------------------------------------------
+
+### Question 6: (2 pts)
+
+Create a scatterplot using the `ggplot()` function below to explore how the waiting time might be related to the eruption duration. Make sure to change the axis labels and the title for the graph to something more directly related to the data being plotted. 
+
+Briefly describe what you notice in this graph.
+
+```{r}
+# your code goes below (make sure to edit comment)
+faithful |> 
+    ggplot(aes(x = waiting, y = eruptions)) + 
+    geom_point() + 
+    labs(x = "X Axis Label",
+         y = "Y Axis Label",
+         title = "Plot Title")
+```
+
+**Your answer goes here. Write sentences in bold.**
+
+### Question 7: (2 pts)
+
+Consider the following hypotheses about the relationship between waiting time and eruption length:
+
+- A longer waiting time after one eruption is generally followed by a longer eruption compared to an eruption that follows a shorter waiting time;
+
+- The waiting time between eruptions and the eruption length have no relationship at all. 
+
+Given the data shown in the plot from Question 6, which of the two hypotheses is more likely?
+
+
+**Your answer goes here. Write sentences in bold.**
+
+------------------------------------------------------------------------
+
+### Formatting: (4 pts)
+
+Render your file! You can
+
+-   Render your file into pdf directly or
+
+-   Render your file into html and then print as PDF.
+
+Is it working? If not, try to decipher the error message (look up the error message, consult websites such as [stackoverflow](https://stackoverflow.com/) or [crossvalidated](https://stats.stackexchange.com/)).
+
+Once it renders in html, click on `Open in Browser` at the top left of the window pops out. Print your html file into pdf from your browser. Any issue? Ask your classmates or a TA!
